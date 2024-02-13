@@ -14,7 +14,7 @@ body {
        opacity: 0.5;
        transition: 0.2s;
    }
-   .buttonfade1:hover {opacity: 1;}
+   .buttonfade1:hover {opacity: 0.9;}
 
 
    .buttonfade2{
@@ -26,7 +26,7 @@ body {
     opacity: 0.5;
     transition: 0.2s;
     }
-    .buttonfade2:hover {opacity: 0;}
+    .buttonfade2:hover {opacity: 0.1;}
    
    .hidden {
        display: none;

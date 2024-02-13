@@ -10,5 +10,6 @@
     <div id=element class="hidden">Biz burdayız</div>
     <button class="buttonfade1" id="show-element">Show </button>
     <button class="buttonfade2" id="hide-element">Hide </button>
+    <a href='bubblegame.php'>Bubble Game</a>
 </body>
 </html>

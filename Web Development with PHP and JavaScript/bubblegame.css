@@ -1,0 +1,40 @@
+
+.startbutton{
+
+    background-color: rgb(65, 156, 39) ;
+       border: rgb(255, 255, 255);
+       padding: 12px 24px;
+       font-size: 24px;
+       text-align: center;
+       position: relative; 
+        z-index: 1;
+}
+.startbutton:hover{opacity: 0.9;}
+
+
+.stopbutton{
+    background-color: rgb(244, 40, 40) ;
+    border: rgb(255, 255, 255);
+    padding: 12px 24px;
+    font-size: 24px;
+    text-align: center;
+    position: relative; 
+    z-index: 1;
+}
+.stopbutton:hover{opacity: 0.9;}
+
+.bubble {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(205, 98, 116);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+}
