@@ -1,0 +1,24 @@
+.form_field {
+    position: relative;
+    width: 10%;
+    border: 0;
+    border-bottom: 3px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: rgb(255, 0, 0);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.submitbutton{
+
+    background-color:  rgb(13, 0, 33) ;
+    color: white;
+    padding: 12px 24px;
+    font-size: 24px;
+    text-align: center;
+    position:fixed  ; 
+    z-index: 1;
+}
+.startbutton:hover{opacity: 0.9;}
