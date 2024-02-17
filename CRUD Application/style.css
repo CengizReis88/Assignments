@@ -1,6 +1,6 @@
 .form_field {
     position: relative;
-    width: 10%;
+    width: 20%;
     border: 0;
     border-bottom: 3px solid gray;
     outline: 0;
@@ -18,7 +18,15 @@
     padding: 12px 24px;
     font-size: 24px;
     text-align: center;
-    position:fixed  ; 
+    position:relative; 
     z-index: 1;
 }
 .startbutton:hover{opacity: 0.9;}
+
+
+#container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+}

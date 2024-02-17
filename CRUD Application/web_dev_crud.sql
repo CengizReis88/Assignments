@@ -3,7 +3,7 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(32) NOT NULL,
   `email` varchar(128) NOT NULL,
-  `password` int(128) NOT NULL
+  `password` varchar(128) NOT NULL
 )
 
 ALTER TABLE `users`

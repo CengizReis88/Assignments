@@ -1,44 +1,25 @@
 
-<html>
-<head>
-    <title>CRUD App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <form action="create.php" method="POST">
-        <label for="username">Username : </label>
-        <input type="text" id="username" name="username" placeholder="Username" class="form_field"><br>
-        <label for="email">Email : </label>
-        <input type="email" id="email" name="email" placeholder="Email" class="form_field"><br>
-        <label for="password">Password : </label>
-        <input type="password" id="password" name="password" placeholder="Password" class="form_field"><br>
-        <input type="submit" value="Submit" class="submitbutton">
-    </form>
-    
-</body>
-</html>
-
 <?php
 
-class Database {
-    public static $servername = "localhost";
-    public static $username = "root";
-    public static $password = "";
-    public static $database = "web_dev_crud";
+include 'connect.php';
 
-    public static function Connect() {
-        $servername = self::$servername;
-        $username = self::$username;
-        $password = self::$password;
-        $database = self::$database;
 
-        $conn = new mysqli($servername, $username, $password, $database);
+if($_SERVER["REQUEST_METHOD"] == 'POST') {
 
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+  $username = isset($_POST['username']) ? htmlspecialchars(trim($_POST['username'])) : '';
+  $email = isset($_POST['email']) ? filter_var($_POST['email'], FILTER_SANITIZE_EMAIL) : '';
+  $password = isset($_POST['password']) ? trim($_POST['password']) : '';
+  
+  if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
+        
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        return $conn;
-    }
+    $sqladd = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+    $sqladd->bind_param("sss", $username, $email, $password_hash);
+    
+    $sqladd->execute([$username, $email, $password]);
+    
+    $sqladd->close();
+  }
 }
-
+?>
