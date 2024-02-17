@@ -2,18 +2,39 @@
 
 require "connect.php";
 
-if($_SERVER["REQUEST_METHOD"] == 'PUT'){
+class Update{
+    private $conn;
 
-    parse_str(file_get_contents('create.php'), $data);
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
     
-    $userid = $data['user_id'];
-    $username = $data['username'];
-    $email = $data['email'];
-    $password = $data['password'];
-    
-    $sqlupdate = $conn->prepare('UPDATE users SET username=?, email=?, password=? WHERE user_id = ?');
-    $sqlupdate->bind_param("sss", $username, $email, $password);
-    $sqlupdate->execute([$username, $email, $password]);
+    public function updateUser($newusername, $newemail, $newpassword, $userid){
+        
+        if(!empty($newusername) && !empty($newemail) && !empty($newpassword) && $this->validateID($userid)){
+            $sqlupdate = "UPDATE users SET username = '$newusername' email ='$newemail' password='$newpassword'WHERE user_id ?  ";
+            $result = $this->conn->query($sqlupdate);
+        
+            if($result){
+                $this->conn->commit();
+            }
+            else{
+                $this->conn->rollback();
+            }
 
+        
+        
+        }
+    }
+    private function validateID($userid){
+        if($userid > 0){
+            return true;
+        }
+         else{
+            throw new Exception("ID must be higher than 0");
+           }
+               }
 }
-?>
+
+    
+        

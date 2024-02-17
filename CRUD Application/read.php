@@ -2,10 +2,25 @@
 
 include "connect.php";
 
-if($_SERVER["REQUEST_METHOD"] == 'GET'){
+class Display {
+    private $conn;
 
-    $sqldisplay = $conn->query('SELECT * FROM users');
-    $result = $sqldisplay->fetch_all(PDO::FETCH_ASSOC);
-    echo json_encode($result);
+    public function __construct($conn) {
+        $this->conn = $conn;
+    }
+
+    public function displayUser(){
+
+        $sqldisplay = "SELECT * FROM users";
+        $result = $this->conn->query($sqldisplay);
+
+        if($result){
+            echo json_encode($result);
+        }
+        
+
+
+
+    }
 
 }

@@ -2,16 +2,37 @@
 
 include 'connect.php';
 
-if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
+class Delete{
+private $conn;
 
-    $id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 0;
+public function _Construct($conn) {
+    $this->conn = $conn;
+}
+    public function deleteUser($userid){
+        
+        if($this->validateID($userid)){
+            $sqldelete = 'DELETE FROM users WHERE user_id='.$userid;
+            $result = $this->conn->query($sqldelete);
 
-    if($id > 0){
+            if($result){
+                $this->conn->commit();
+            }
+            else{
+                $this->conn->rollback();
+            }
+        }
+    }   
     
-    $sqldelete = $conn->prepare('DELETE FROM users WHERE user_id=?');
-    $sqldelete->bind_param("i",$id);
-    $sqldelete->execute([$id]);
+    private function validateID($userid){
+        if($userid > 0){
+            return true;
+        }
+        else{
+            throw new Exception("ID must be higher than 0");
+        }
+
+
+
+
     }
 }
-
-?>
