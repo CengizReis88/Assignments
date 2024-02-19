@@ -1,5 +1,8 @@
 <?php
 
+include 'connect.php';
+include 'index.php';
+
 class Register{
     private $conn;
 
@@ -44,9 +47,9 @@ class Register{
 
     public function createUser($username, $email, $password){
 
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $username = $_POST['registerusername'];
+        $email = $_POST['registeremail'];
+        $password = $_POST['registerpassword'];
 
         try{
             if($this->validateUsername($username) && $this->validateEmail($email) && $this->validatePassword($password)){
