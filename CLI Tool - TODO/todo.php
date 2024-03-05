@@ -3,8 +3,6 @@
 include ('connect.php');
 
 
-
-
 function displayTasks($filter){
 
     global $conn;
@@ -70,7 +68,7 @@ function deleteTask($conn, $id){
         return false;
     }
     else{
-        $sql = $conn->prepare("DELETE FROM tasks WHERE id = ?");
+        $sql = $conn->prepare("DELETE FROM tasks WHERE taskid = ?");
         $sql->bind_param("i", $id);
         $result = $sql->execute();
 
@@ -93,7 +91,7 @@ function updateTask($conn, $id, $task){
         return false;
     }
     else{
-        $sql = $conn->prepare("UPDATE tasks SET taskname = ? WHERE id = ?");
+        $sql = $conn->prepare("UPDATE tasks SET taskname = ? WHERE taskid = ?");
         $sql->bind_param("si", $task,$id);
         $result = $sql->execute();
 
@@ -117,7 +115,7 @@ function doTask($conn, $id){
         return false;
     }
     else{
-        $sql = $conn->prepare("UPDATE tasks SET completion = 'Done' WHERE id = ?");
+        $sql = $conn->prepare("UPDATE tasks SET completion = 'Done' WHERE taskid = ?");
         $sql->bind_param("i", $id);
         $result = $sql->execute();
 
@@ -141,7 +139,7 @@ function undoTask($conn, $id){
         return false;
     }
     else{
-        $sql = $conn->prepare("UPDATE tasks SET completion = 'Pending' WHERE id = ?");
+        $sql = $conn->prepare("UPDATE tasks SET completion = 'Pending' WHERE taskid = ?");
         $sql->bind_param("i", $id);
         $result = $sql->execute();
 
