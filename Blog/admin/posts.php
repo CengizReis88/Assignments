@@ -1,10 +1,17 @@
-<?php  include('../config.php'); ?>
-<?php  include(ROOT_PATH . '/admin/apps/admin_functions.php'); ?>
-<?php  include(ROOT_PATH . '/admin/apps/post_functions.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/head_part.php'); ?>
+<?php  
+include('../config.php');
+include(ROOT_PATH . '/admin/apps/admin_functions.php');
+include(ROOT_PATH . '/admin/apps/post_functions.php');
+include(ROOT_PATH . '/admin/includes/head_part.php'); 
 
-<!-- Get all admin posts from DB -->
-<?php $posts = getAllPosts(); ?>
+
+$posts = getAllPosts(); 
+
+?>
+
+
+
+
         <title>Admin | Manage Posts</title>
 </head>
 <body>
@@ -25,7 +32,7 @@
                         <?php else: ?>
                                 <table class="table">
                                                 <thead>
-                                                <th>N</th>
+                                                <th>ID</th>
                                                 <th>Title</th>
                                                 <th>Author</th>
                                                 <!-- Only Admin can publish/unpublish post -->

@@ -1,6 +1,10 @@
-<?php  include('../config.php'); ?>
-        <?php include(ROOT_PATH . '/admin/apps/admin_functions.php'); ?>
-        <?php include(ROOT_PATH . '/admin/includes/head_part.php'); ?>
+<?php  
+include('../config.php');
+include(ROOT_PATH . '/admin/apps/admin_functions.php');
+include(ROOT_PATH . '/admin/includes/head_part.php'); 
+?>
+
+
         <title>Admin | Dashboard</title>
 </head>
 <body>
@@ -12,8 +16,9 @@
                 </div>
                 <?php if (isset($_SESSION['user'])): ?>
                         <div class="user-info">
-                                <span><?php echo $_SESSION['user']['username'] ?></span> &nbsp; &nbsp; 
-                                <a href="<?php echo BASE_URL . '/logout.php'; ?>" class="logout-btn">logout</a>
+                        <span><?php echo $_SESSION['user']['username'] ?></span>
+                |
+                        <span><a href="logout.php">Logout</a></span>
                         </div>
                 <?php endif ?>
         </div>
@@ -21,15 +26,15 @@
                 <h1>Welcome</h1>
                 <div class="stats">
                         <a href="users.php" class="first">
-                                <span>31</span> <br>
+                                <span></span> <br>
                                 <span>Total users</span>
                         </a>
                         <a href="posts.php">
-                                <span>31</span> <br>
+                                <span></span> <br>
                                 <span>Published posts</span>
                         </a>
                         <a>
-                                <span>31</span> <br>
+                                <span></span> <br>
                                 <span>Comments/not done</span>
                         </a>
                 </div>

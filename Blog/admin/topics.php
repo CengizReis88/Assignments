@@ -1,8 +1,12 @@
-<?php  include('../config.php'); ?>
-<?php  include(ROOT_PATH . '/admin/apps/admin_functions.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/head_part.php'); ?>
+<?php  
 
-<?php $topics = getAllTopics();?>
+include('../config.php');
+include(ROOT_PATH . '/admin/apps/admin_functions.php'); 
+include(ROOT_PATH . '/admin/includes/head_part.php');
+
+$topics = getAllTopics();
+
+?>
 
 
         <title>Admin | Manage Topics</title>
@@ -44,7 +48,7 @@
                         <?php else: ?>
                                 <table class="table">
                                         <thead>
-                                                <th>N</th>
+                                                <th>ID</th>
                                                 <th>Topic Name</th>
                                                 <th colspan="2">Action</th>
                                         </thead>

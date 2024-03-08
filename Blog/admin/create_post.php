@@ -1,10 +1,16 @@
 
-<?php  include('../config.php'); ?>
-<?php  include(ROOT_PATH . '/admin/apps/admin_functions.php'); ?>
-<?php  include(ROOT_PATH . '/admin/apps/post_functions.php'); ?>
-<?php include(ROOT_PATH . '/admin/includes/head_part.php'); ?>
-<!-- Get all topics -->
-<?php $topics = getAllTopics();      ?>
+<?php  
+include('../config.php');
+include(ROOT_PATH . '/admin/apps/admin_functions.php');
+include(ROOT_PATH . '/admin/apps/post_functions.php');
+include(ROOT_PATH . '/admin/includes/head_part.php'); 
+
+$topics = getAllTopics();      
+?>
+
+
+
+
         <title>Admin | Create Post</title>
 </head>
 <body>

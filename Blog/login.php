@@ -1,9 +1,13 @@
 
-<?php  include('config.php'); ?>
-<?php  include(ROOT_PATH . '/apps/register_login.php'); ?>
-<?php  include('includes/head_part.php'); ?>
+<?php 
+ 
+include('config.php');
+include(ROOT_PATH . '/apps/register_login.php');
+include('includes/head_part.php'); 
+?>
         
 
+        
         <title>CengizBlog | Sign in </title>
 </head>
 <body>

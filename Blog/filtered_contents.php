@@ -1,17 +1,22 @@
-<?php include('config.php'); ?>
-<?php include(ROOT_PATH . '/apps/user_functions.php'); ?>
-<?php include(ROOT_PATH . '/includes/head_part.php'); ?>
 <?php 
+include('config.php'); 
+include(ROOT_PATH . '/apps/user_functions.php');
+include(ROOT_PATH . '/includes/head_part.php');  
         
-        $topic_id = '';
+$topic_id = '';
+
+
         
         // Get posts under a particular topic
-        if (isset($_GET['topic'])) {
-                $topic_id = $_GET['topic'];
-                $contents = getPublishedContentsByTopic($topic_id,$conn);
-        }
+if (isset($_GET['topic'])) {
+        $topic_id = $_GET['topic'];
+        $contents = getPublishedContentsByTopic($topic_id,$conn);
+}
 ?>
-        <title>HASXON </title>
+
+
+
+        <title>CengizBlog</title>
 </head>
 <body>
 <div class="container">

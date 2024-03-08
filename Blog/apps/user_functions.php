@@ -1,8 +1,20 @@
 <?php
 
-function getPublishedContents($conn){
+$topics = getAllTopics($conn);
 
-    $sqlshowpublishedcontent = "SELECT * FROM contents WHERE published = 1";
+$contentsPerPage = 6;
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+$start = ($page - 1) * $contentsPerPage;
+
+$contents = getPublishedContents($conn, $start, $contentsPerPage);
+
+$totalPages = ceil(countAllPublishedContents($conn) / $contentsPerPage);
+
+function getPublishedContents($conn, $start, $contentsPerPage){
+
+    $sqlshowpublishedcontent = "SELECT * FROM contents WHERE published = 1 LIMIT $contentsPerPage OFFSET $start;";
     $result = mysqli_query($conn, $sqlshowpublishedcontent);
 
     $contents = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -15,6 +27,16 @@ function getPublishedContents($conn){
     return $final_contents;
 }
 
+function countAllPublishedContents($conn){
+    $sqlCount = "SELECT COUNT(*) AS total FROM contents WHERE published = 1";
+    $result = mysqli_query($conn, $sqlCount);
+    $row = mysqli_fetch_assoc($result);
+    return $row['total'];
+}
+
+
+
+
 function getContentTopic($contentid,$conn){
     $sqlshowcontenttopic = "SELECT * FROM topics WHERE id= (SELECT topic_id FROM content_topic WHERE content_id=$contentid) LIMIT 1";
 
@@ -26,7 +48,7 @@ function getContentTopic($contentid,$conn){
 
 function getPublishedContentsByTopic($topic_id,$conn){
 
-    $sqlshowpublishedcontentsbytopic = "SELECT * FROM contents WHERE content_id IN (SELECT content_id FROM content_topic WHERE topic_id=$topic_id GROUP BY content_id HAVING COUNT(1) = 1)";
+    $sqlshowpublishedcontentsbytopic = "SELECT * FROM contents WHERE id IN (SELECT id FROM content_topic WHERE topic_id=$topic_id GROUP BY content_id HAVING COUNT(1) = 1)";
 
     $result = mysqli_query($conn, $sqlshowpublishedcontentsbytopic);
 
@@ -43,7 +65,7 @@ function getPublishedContentsByTopic($topic_id,$conn){
 
 function getTopicNameById($id,$conn){
 
-    $sqlshowtopicnamebyid = "SELECT contentname FROM topics WHERE content_id=$id";
+    $sqlshowtopicnamebyid = "SELECT name FROM topics WHERE id=$id";
 
     $result = mysqli_query($conn, $sqlshowtopicnamebyid);
     $topic = mysqli_fetch_assoc($result);

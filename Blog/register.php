@@ -1,7 +1,9 @@
 
-<?php  include('config.php'); ?>
-<?php  include(ROOT_PATH . '/apps/register_login.php'); ?>
-<?php include(ROOT_PATH . '/includes/head_part.php'); ?>
+<?php  
+include('config.php'); 
+include(ROOT_PATH . '/apps/register_login.php'); 
+include(ROOT_PATH . '/includes/head_part.php'); 
+ ?>
 
 
 
@@ -30,7 +32,5 @@
                 </form>
         </div>
 </div>
-<!-- // container -->
-<!-- Footer -->
-        <?php include( ROOT_PATH . '/includes/footer.php'); ?>
-<!-- // Footer -->
+
+<?php include( ROOT_PATH . '/includes/footer.php'); ?>

@@ -1,11 +1,17 @@
-<?php  include('../config.php'); ?>
-<?php  include(ROOT_PATH . '/admin/apps/admin_functions.php'); ?>
-<?php 
+<?php  
+include('../config.php');  
+include(ROOT_PATH . '/admin/apps/admin_functions.php'); 
+
         // Get all admin users from DB
         $admins = getAdminUsers();
         $roles = ['Admin', 'User'];                           
+
+include(ROOT_PATH . '/admin/includes/head_part.php'); 
 ?>
-<?php include(ROOT_PATH . '/admin/includes/head_part.php'); ?>
+
+
+
+
         <title>Admin | Manage users</title>
 </head>
 <body>
@@ -20,7 +26,6 @@
 
                         <form method="post" action="<?php echo BASE_URL . '/admin/users.php'; ?>" >
 
-                                <!-- validation errors for the form -->
                                 <?php include(ROOT_PATH . '/includes/errors.php') ?>
 
                                 <!-- if editing user, the id is required to identify that user -->
@@ -41,7 +46,7 @@
 
                                 <!-- if editing user, display the update button instead of create button -->
                                 <?php if ($isEditingUser === true): ?> 
-                                        <button type="submit" class="btn" name="update_admin">UPDATE</button>
+                                        <button type="submit" class="btn" name="update_admin">Update</button>
                                 <?php else: ?>
                                         <button type="submit" class="btn" name="create_admin">Save User</button>
                                 <?php endif ?>
@@ -59,7 +64,7 @@
                         <?php else: ?>
                                 <table class="table">
                                         <thead>
-                                                <th>N</th>
+                                                <th>ID</th>
                                                 <th>Admin</th>
                                                 <th>Role</th>
                                                 <th colspan="2">Action</th>

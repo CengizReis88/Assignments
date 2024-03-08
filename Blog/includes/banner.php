@@ -6,7 +6,7 @@
         </div>
 <?php }else{ ?>
 <div class="banner">
-        <div class="welcome_msg">
+        <div class="welcome_msg">              
                 <a href="register.php" class="btn">Sign up</a>
                 <a href="login.php" class="btn">Sign in</a>
         </div>

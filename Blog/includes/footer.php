@@ -1,7 +1,4 @@
-    <div class="footer">
-        <p>CengizBlog &copy; <?php echo date('Y'); ?></p>
-    </div>
+
+<div class="footer">
+        <p>CengizBlog / <?php echo date('Y'); ?></p>
 </div>
-        <!-- // container -->
-</body>
-</html>

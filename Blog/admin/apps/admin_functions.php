@@ -1,4 +1,6 @@
 <?php 
+include ('../apps/register_login.php');
+
 
 $admin_id = 0;
 $isEditingUser = false;
@@ -65,7 +67,7 @@ function createAdmin($request_values){
         $username = validateUsername($request_values['username']) ? $request_values['username'] : '';
         $email = validateEmail($request_values['email']) ? $request_values['email'] : '';
         $password = validatePassword($request_values['password']) ? $request_values['password'] : ''; 
-        $passwordConfirmation = $request_values['passwordconfirm'];
+        $passwordConfirmation = $request_values['passwordConfirmation'];
 
         if(isset($request_values['admin'])){
                 $admin = $request_values['admin'];
@@ -130,7 +132,7 @@ function updateAdmin($request_values){
 
         global $conn, $errors, $admin, $username, $isEditingUser, $admin_id, $email;
    
-        $admin_id = $request_values['admin_id'];
+        $admin_id = $request_values['admin_id'];/* */
         
         $isEditingUser = false;
 
@@ -185,7 +187,7 @@ function createTopic($request_values){
     
         global $conn, $errors, $topic_name;
 
-        $topic_name = validString($request_values['topic_name'] ? $request_values['topic_name'] : '');
+        $topic_name = $request_values['topic_name'];
     
         $topic_slug = makeSlug($topic_name);
     
@@ -225,8 +227,8 @@ function updateTopic($request_values) {
         
         global $conn, $errors, $topic_name, $topic_id;
 
-        $topic_name = validString($request_values['topic_name'] ? $request_values['topic_name'] : '');
-        $topic_id = validString($request_values['topic_id'] ? $request_values['topic_id'] : '');
+        $topic_name = $request_values['topic_name'];
+        $topic_id = $request_values['topic_id'] ;
     
         $topic_slug = makeSlug($topic_name);
     
@@ -235,7 +237,7 @@ function updateTopic($request_values) {
         }
     
         if (count($errors) == 0) {
-
+                
                 $query = "UPDATE topics SET name='$topic_name', slug='$topic_slug' WHERE id=$topic_id";
                 mysqli_query($conn, $query);
 
